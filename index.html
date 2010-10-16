@@ -1,9 +1,14 @@
-
 <!DOCTYPE html> 
 <!--
   jQuery's Best Friends
   by Alex Sexton
   WTFPL License
+
+  If you want the cool kid fonts for this preso:
+  http://new.myfonts.com/fonts/hiekkagraphics/sketchetik/
+  http://www.microsoft.com/downloads/en/details.aspx?familyid=22e69ae4-7e40-4807-8a86-b3d36fab68d3&displaylang=en
+
+  They aren't licensed for webfonting, so sry.
 
   This all refers to the Presentation slides or whatever.
   vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -32,474 +37,8 @@
     <meta charset="utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" /> 
     <title>jQuery's Best Friends | by Alex Sexton</title>
-    
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" />
-    <style>
-      body {
-        font: 16px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0px; top: 0px;
-      }
- 
-      .presentation {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0px;
-        top: 0px;
-        display: block;
-        overflow: hidden;
-        background: #0D2833;
-      }
- 
-      .slides {
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        position: absolute;
-        display: block;
-        -webkit-transition: -webkit-transform 1s ease-in-out;
-        -moz-transition: -moz-transform 1s ease-in-out;
-        -o-transition: -o-transform 1s ease-in-out;
-        transition: transform 1s ease-in-out;
-      }
- 
-      .slide {
-        display: none;
-        position: absolute;
-        overflow: hidden;
-        width: 900px;
-        height: 700px;
-        left: 50%;
-        top: 50%;
-        margin-top: -350px;
-        background-color: #eee;
-        background: -webkit-gradient(linear, left bottom, left top, from(#D4E9CF), to(#fff));
-        background: -moz-linear-gradient(bottom, #D4E9CF, #fff);
-        background: linear-gradient(bottom, #D4E9CF, #fff);
-        -webkit-transition: margin 0.25s ease-in-out;
-        -moz-transition: margin 0.25s ease-in-out;
-        -o-transition: margin 0.25s ease-in-out;
-        transition: margin 0.25s ease-in-out;
-      }
- 
-      .slide:nth-child(even) {
-        -moz-border-radius: 20px 0;
-        -khtml-border-radius: 20px 0;
-        border-radius: 20px 0; /* includes Opera 10.5+ */
-        -webkit-border-top-left-radius: 20px;
-        -webkit-border-bottom-right-radius: 20px;
-      }
- 
-      .slide:nth-child(odd) {
-        -moz-border-radius: 0 20px;
-        -khtml-border-radius: 0 20px;
-        border-radius: 0 20px;
-        -webkit-border-top-right-radius: 20px;
-        -webkit-border-bottom-left-radius: 20px;
-      }
- 
-      .slide p, .slide textarea {
-        font-size: 20px;
-      }
- 
-      .slide .counter {
-        color: #999999;
-        position: absolute;
-        left: 20px;
-        bottom: 20px;
-        display: block;
-        font-size: 12px;
-      }
- 
-      .slide.title > .counter,
-      .slide.segue > .counter,
-      .slide.mainTitle > .counter {
-        display: none;
-      }
- 
-      .force-render {
-        display: block;
-        visibility: hidden;
-      }
-      
-      .slide.far-past {
-        display: block;
-        margin-left: -2400px;
-      }
-      
-      .slide.past {
-        visibility: visible;
-        display: block;
-        margin-left: -1400px;
-      }
-      
-      .slide.current {
-        visibility: visible;
-        display: block;
-        margin-left: -450px;
-      }
-      
-      .slide.future {
-        visibility: visible;
-        display: block;
-        margin-left: 500px;
-      }
-      
-      .slide.far-future {
-        display: block;
-        margin-left: 1500px;
-      }
- 
-      body.three-d div.presentation {
-        /*background: -webkit-gradient(radial, 50% 50%, 10, 50% 50%, 1000, from(#333), to(#000));        */
-      }
-      
-      body.three-d div.slides {
-        -webkit-transform: translateX(50px) scale(0.8) rotateY(10deg);
-        -moz-transform: translateX(50px) scale(0.8) rotateY(10deg);
-        -o-transform: translateX(50px) scale(0.8) rotateY(10deg);
-        transform: translateX(50px) scale(0.8) rotateY(10deg);
-      }
-      
-      /* Content */
-      /*
-        Font sizes:
-        header h1 - 50px
-        h2, p - 20px
-        default, pre, input - 16px
-      */
-      
-      @font-face { font-family: 'Junction'; src: url(src/Junction02.otf); }
-      @font-face { font-family: 'LeagueGothic'; src: url(src/LeagueGothic.otf); }
-      
-      header {
-        font-family: 'Droid Sans';
-        font-weight: normal;
-        letter-spacing: -.05em;
-        color: black;
-        text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
-        position: absolute;
-        left: 30px;
-        top: 25px;
-        margin: 0;
-        padding: 0;
-        font-size: 50px;
-      }
-      
-      h1 {
-        font-size: 100%;
-        display: inline;
-      	font-weight: normal;
-      	padding: 0;
-      	margin: 0;
-      }
-      
-      h2 {
-        font-family: 'Droid Sans';
-        color: black;
-        font-size: 20px;
-        padding: 0;
-        margin: 15px 0 5px 0;
-      }
-            
-      h2:first-child {
-        margin-top: 0;
-      }
- /*
-      section, footer {
-        font-family: 'Droid Sans';
-        color: #3f3f3f;
-        text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
-        margin: 100px 30px 0;
-        display: block;
-        overflow: hidden;
-      }*/
-      
-      footer {
-        font-size: 12px;
-        margin: 20px 0 0 30px;
-      }
- 
-      a {
-        color: inherit;
-        display: inline-block;
-        text-decoration: none;
-        line-height: 110%;
-        border-bottom: 2px solid #3f3f3f;
-      }
- 
-      .gmap a {
-        line-height: 100%;
-        border-bottom: none;
-      }
- 
-      li {
-        list-style: none;
-        padding: 10px 0;
-      }
- 
-      button {
-        font-size: 20px;
-      }
-      
-      pre button {
-        margin: 2px;
-      }
-      
-      .summary {
-        font-size: 30px;
-      }
- 
-      .bullets {
-        font-size: 40px;
-      }
-      
-      section.left {
-        float: left;
-        width: 390px;
-      }
-      
-      section.small {
-        font-size: 24px;
-      }
-      
-      section.small ul {
-        margin: 0 0 0 15px;
-        padding: 0;
-      }
-      
-      section.small li {
-        padding-bottom: 0;
-      }
-            
-      section.middle {
-        line-height: 68px;
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-        height: 700px;
-        width: 900px;
-      }
-      /*
-      pre {
-        text-align: left;
-        font-family: 'Droid Sans Mono', Courier;        
-        padding: 10px 20px;
-        background: rgba(255, 0, 0, 0.05);
-        -webkit-border-radius: 8px;
-        -khtml-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 0, 0, 0.2);
-      }
-      
-      pre select {
-        font-family: Monaco, Courier;
-        border: 1px solid #c61800;
-      }
-      */
-      input {
-        font-size: 16px;
-        margin-right: 10px;
-        font-family: Helvetica;
-        padding: 3px;
-      }
-      input[type="range"] {
-        width: 100%;
-      }
-      
-      button {
-        margin: 20px 10px 0 0;
-        font-family: Verdana;
-      }
-      
-      button.large {
-        font-size: 32px;
-      }
-        /*
-      pre b {
-        font-weight: normal;
-        color: #c61800;
-        text-shadow: #c61800 0 0 1px;
-      }
-      pre em {
-        font-weight: normal;
-        font-style: normal;
-        color: #18a600;
-        text-shadow: #18a600 0 0 1px;
-      }
-      pre input[type="range"] {
-        height: 6px;
-        cursor: pointer;
-        width: auto;
-      }
-      */
-      div.example {
-        display: block;
-        padding: 10px 20px;
-        color: black;
-        background: rgba(255, 255, 255, 0.4);
-        -webkit-border-radius: 8px;
-        -khtml-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-      }
-      
-      video {
-        -moz-border-radius: 8px;
-        -khtml-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        border-radius: 8px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-      }
-      .css, .js, .html {
-	font-family: 'Consolas';
-	font-size: 32px;
-	line-height:36px;
-      }
-      td {
-	vertical-align:top;
-      }
-      .gutter {
-	padding:0 4px;
-	border-right:1px solid #333333;
-      }
-      td.code {
-	padding-left:4px;
-      }
-      .syntaxhighlighter {
-	padding:15px 0 14px;
-	box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
-        -o-box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
-      }
-      .gutter .line {
-	color:#555555;
-	font-size:24px;
-	padding-top:4px;
-	line-height:32px;
-	vertical-align:middle;
-      }
-      /*
-      .css,
-      .js,
-      .html,
-      .key {
-        font-family: 'Droid Sans';
-        color: black;
-        display: inline-block;
-        padding: 6px 10px 3px 10px;
-        font-size: 25px;
-        line-height: 30px;
-        text-shadow: none;
-        letter-spacing: 0;
-        bottom: 10px;
-        position: relative;
-        -moz-border-radius: 10px;
-        -khtml-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        background: white;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-        -o-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-      }
-      
-      .key { font-family: Arial; }
-      
-      :not(header) > .css,
-      :not(header) > .js,
-      :not(header) > .html,
-      :not(header) > .key {
-        margin: 0 5px;
-        bottom: 4px;
-      }
-      
-      .css {
-        background: -webkit-gradient(linear, left top, left bottom, from(#ff4), to(#ffa));
-        background-color: #ff4;
-        background: -moz-linear-gradient(left top, #ff4, #ffa);
-      }
-
-      .js {
-        background: -webkit-gradient(linear, left top, left bottom, from(#4f4), to(#afa));
-        background-color: #4f4;
-        background: -moz-linear-gradient(left top, #4f4, #afa);
-      }
-      .html {
-        background: -webkit-gradient(linear, left top, left bottom, from(#e88), to(#fee));
-        background-color: #e88;
-        background: -moz-linear-gradient(left top, #e88, #fee);
-      }*/
- 
-      .two-column {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-      }
-      
-      .summary li::before, .bullets li::before {
-        content: '· ';
-      }
- 
-      .stroke {
-        -webkit-text-stroke-color: red;
-        -webkit-text-stroke-width: 1px;
-      } /* currently webkit-only */
-      
-      .center {
-        text-align: center;
-      }
-      
-      .formula {
-        font-size: 50px;
-      }
-      
-      #presentation-counter {
-        color: #ccc;
-        font-size: 100px;
-        letter-spacing: 1px;
-        position: absolute;
-        top: 40%;
-        left: 0;
-        width: 100%;
-        text-align: center;
-      }
-      
-      .hsl-value {
-        display: inline-block;
-        width: 50px;
-      }
-      .landing h1 {
-	font-size:72px;
-      }
-      h1 {
-	display:block;
-	margin-top:20px;
-        font-size:60px;
-        font-family:"Sketchetik";
-        font-weight:800;
-        color:#222222;
-        text-shadow:1px 1px 0 #EEEEEE;
-      }
-      h1.middleGuy {
-	text-align:center;
-	margin:290px auto;
-      }
-      header.moreLegit {
-	position:static;
-      }
-    </style> 
     <link href="css/syntax.css" rel="stylesheet" type="text/css" />
   </head> 
   <body> 
@@ -508,26 +47,9 @@
       <div class="slides"> 
         <div class="slide">
           <div class="cpbg">
-            <style> 
-              .cpbg {
-                background-image:url(img/cptplanet.png);
-                background-position:50% 50%;
-                background-repeat:no-repeat;
-              }
-              .cpbg h1 {
-                opacity:0.90;
-              }
-              .cpbg h4 {
-		font-family:"helvetica nueue", "helvetica", "verdana";
-                padding-left:300px;
-                line-height:25px;
-                margin:0;
-                color:#0D2833;
-              }
-            </style> 
             <section class="middle landing"> 
-            <h1>jQuery's Best Friends</h1>
-            <h4>by Alex Sexton</h4>
+              <h1>jQuery&rsquo;s Best Friends</h1>
+              <h4>by Alex Sexton</h4>
             </section> 
           </div>
         </div>
@@ -580,7 +102,846 @@ $.fn.a = function(){
 	
 	
 	
+	<div class="slide">
+          <header>
+            <h1>But jQuery is pretty bad about this:</h1>
+          </header>
+          <section style="margin-top:163px;">
+	    <pre class="brush: js; toolbar: false">
+// The Mighty Ducks Flying V
+function knucklePuck() {
+  function() {
+    function() {
+      function() {
+        // omg inception.
+      }
+    }
+  }
+}();</pre>
+	  </section>
+        </div>
 	
+	
+
+
+
+	<div class="slide">
+          <header>
+            <h1>Srsly guys.</h1>
+            <section>
+              <p class="quoteThing">Just because jQuery doesn't decide on a 
+              application structure for you, <strong>it doesn't mean that you don't need one.</strong></p>
+            </section>
+          </header>
+        </div>
+	
+	
+
+
+
+
+	<div class="slide">
+          <header>
+            <h1>RequireJS</h1>
+          </header>
+          <section class="text">
+           <p>RequireJS is a module loader (@<3).</p>
+           <ul>
+             <li>Consider it your bootstrapper</li>
+             <li>4.9KB minified and gzipped (on avg)</li>
+             <li>CommonJS Compliant(ish)</li>
+             <li>Uses modules</li>
+             <li>Nested Dependency Management</li>
+             <li>Serverside (Javascript on Java) Build Tool for Optimization</li>
+             <li>Asynchronous. (Faster than regular script tags)</li>
+             <li>Plugin System for extending loading methods and types</li>
+          </ul>
+          </section>
+        </div>
+	
+
+
+
+
+	<div class="slide">
+          <header>
+            <h1>LABjs</h1>
+          </header>
+          <section class="text">
+           <p>LABjs is a script loader.</p>
+           <ul>
+             <li>A replacement for the script tag</li>
+             <li>2KB but with a 640B bootstrapper - You should probably inline this...</li>
+             <li>FAST</li>
+             <li>Easy (but) Manual Dependency Management</li>
+             <li>No code modifications || Style rules, etc...</li>
+             <li>Asynchronous. Load in Parallel. Execute In Order.</li>
+          </ul>
+          </section>
+        </div>
+	
+
+
+
+
+
+
+
+	<div class="slide">
+          <header>
+            <h1>HINT</h1>
+            <section>
+              <p style="text-align:right;width:797px;" class="quoteThing">If you aren't using a script loader:<br /> <strong>YOU SHOULD BE.</strong></p>
+            </section>
+          </header>
+        </div>
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Using RequireJS: <span style="font-weight:normal;">Getting Started</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: html; toolbar: false">
+&lt;!DoCTyPe html>
+&lt;html>
+&lt;head>
+  &lt;title>Paul Irish Fan Club&lt;/title>
+  &lt;script>
+    // Load my application
+    require(["myApp"]);
+    // omg that's it?!?!
+  &lt;/script>
+&lt;/head>
+// ... </pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>RequireJS: <span style="font-weight:normal;">Actually Getting Started</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+require.def("myApp", 
+['lib/jquery', 'utils/underscore'], 
+function($, _) {
+
+ $(function(){
+  _(["rebecca", "adam"]).each(function(n){
+   alert(n + " is my BFF!");
+  });
+ });
+
+});</pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Objects: <span style="font-weight:normal;">non-moduley way.</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+function Person(opts) {
+  // Anything accessible goes on `this`
+  this.func1 = function(){...};
+  this.name = opts.fname + opts.lname;
+}
+
+// The function runs, and 
+// returns a new instance of `this`
+var myPerson = new Person({
+  fname: 'Alex',
+  lname: 'Sexton'
+});
+</pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Modules: <span style="font-weight:normal;">WTF are they?</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+function Person(opts) {
+  // normally a constructor function
+  // returns `this` (inherently)
+  return {
+    obj   : function(){...},
+    name  : opts.fname+' '+opts.lname
+  };
+}
+var myPerson = new Person({
+  lname: 'Sexton',
+  fname: 'Alex'
+});
+</pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>RequireJS: <span style="font-weight:normal;">A Module!</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+require.def("myModule", 
+['lib/jquery'], 
+function($) {
+  return {
+    doSomething : function(){...},
+    lolify      : function(){...}
+  };
+});</pre>
+          <p class="codagraph">The dependencies that you <em>require</em> will execute <strong>in no specific order</strong>,
+          as they shouldn't be dependent on each other.
+	  </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>RequireJS: <span style="font-weight:normal;">Using A Module!</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+require(["myModule"],
+function(myModule) {
+  // Use the API that you built!
+  myModule.doSomething();
+  myModule.lolify();
+});</pre>
+          <p class="codagraph">It doesn't matter how deeply nested your dependencies are, they will
+          execute in the order that they need to. <strong>Ideally, nothing leaks
+          into the global namespace, unless you force it to.</strong></p>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>RequireJS: <span style="font-weight:normal;">Extensibility</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+require(['order!a.js', 'order!b.js'],
+function(){
+  // b needs a like
+  // IE6 needs death.
+});</pre>
+          <p class="codagraph" style="padding:0 20px;">You can do a lot with a few officially supported plugins:</p>
+          <ul style="margin-left:40px;">
+            <li>Mimic the LABjs method</li>
+            <li>Load text, CSS, and JSON dependencies</li>
+            <li>Load whole i18n bundles (omgwow)</li>
+          </ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>RequireJS: <span style="font-weight:normal;">Advanced Usage</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+require.def('factory', 
+(Object.create) ? [] : ['fill/objCreate'],
+function() {
+  var myCoolObject = {
+    func1: function(){ /* Rebecca */ },
+    func2: function(){ /* does this. */ }
+  };
+  // return a function that returns an obj
+  return function(){
+    return Object.create(myCoolObject);
+  };
+});
+</pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>LABjs: <span style="font-weight:normal;">Script Tag 2.0</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+$LAB
+    .script('/js/json2.js')
+    .script('/js/jquery.js').wait()
+    .script('/js/jquery-ui.js')
+    .script('/js/vapor.js');
+</pre>
+<ul style="margin-left:20px;">
+  <li>LAB === <strong>L</strong>oading <strong>A</strong>nd <strong>B</strong>locking JS</li>
+  <li>Now it should be called SAWjs, but that's ok.</li>
+  <li>Downloads everything at once, only waits to execute between `waits`</li>
+</ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>LABjs: <span style="font-weight:normal;">Inline Script Replacement</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: html; toolbar: false">
+&lt;script src="/js/jquery.js">&lt;/script>
+&lt;script>$('body').load('zombo.html');&lt;/script>
+
+&lt;!-- becomes -->
+&lt;script>
+$LAB
+  .script('/js/jquery.js').wait(function(){
+      $('body').load('zombo.html');
+  });
+&lt;/script>
+</pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>LABjs: <span style="font-weight:normal;">Advanced Usage?</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+var myLabChain = $LAB
+  .script('/js/jquery.js').wait(function(){
+      $('body').load('zombo.html');
+  });
+
+// some code or html here
+document.write('this is not async');
+
+// this will remember everything from the
+// first part and wait til it's done
+myLabChain.script('/js/goto.js');
+</pre>
+	  </section>
+        </div>
+
+
+
+
+	<div class="slide">
+          <header>
+            <h1>SUPER FAMOUS QUOTE</h1>
+            <section>
+              <p class="quoteThing">&#147;The fastest loading script is the one that you never request.&#148;<br />
+              <br />
+              - Leonardo Davinci</p>
+            </section>
+          </header>
+        </div>
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>YepNopeJS: <span style="font-weight:normal;">A LABjs Wrapper</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+yepnope([
+ {
+   test: Object.create,
+   yep : ['script1.js', 'style1.css'],
+   nope: ['shim.js', 'style2.css'],
+   both: ['jquery.js']
+ }
+]);
+</pre>
+<ul style="margin-left:20px;">
+  <li>Uses LABjs chain to keep dependencies in line.</li>
+  <li>Conditionally loads things based on tests!</li>
+</ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Modernizr: <span style="font-weight:normal;">Feature Test The Future</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+          <ul style="margin-left:20px;">
+            <li>Does <strong>not</strong> implement HTML5 or CSS3</li>
+            <li><strong>Tests</strong> to see if features exist</li>
+            <li>Ok, wise-guy, it has the html5shi(m|v) in it...</li>
+            <li>5.0 kb gzipped</li>
+            <li>Must load at top (synchronously), but it's fast!</li>
+            <li>Use in tandem with <strong>Polyfills</strong></li>
+            <li>Works great with Yepnope!</li>
+          </ul>
+
+          </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Modernizr: <span style="font-weight:normal;">Other Features</span><h1>
+          </header>
+          <section style="margin-top:133px;">
+          <pre class="brush: html; toolbar: false">
+&lt;script>if (!Modernizr.websockets) { alert('go away!'); }&lt;/script>
+&lt;style>
+#notice {  display:none; }
+.no-js #notice { display:block; }
+.websockets #sojustcloud {
+  display:block;
+}
+&lt;/style>
+</pre>
+          <ul style="margin-left:20px;">
+            <li>Gives you the Modernizr object, with the test results on it.</li>
+            <li>Adds classes to the html or body element based on feature tests</li>
+          </ul>
+
+          </section>
+        </div>
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Modernizr + YepNope === <span style="font-weight:normal;">BFFs</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+yepnope({
+   test: Modernizr.geolocation,
+   yep : ['/js/geo.js'],
+   nope: ['google-maps-api.js'],
+   callback: function(file, result){
+     if (!result) {
+       loc = goog.getLocation();
+     }
+   }
+ });
+</pre>
+<ul style="margin-left:20px;">
+  <li>Use the callback to run more conditional code...</li>
+</ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header><h1>Vapor.js</h1></header>
+        </div>
+
+
+
+
+
+
+
+        <div class="slide">
+          <header><h1>Let's Talk Templates!</h1></header>
+          <section>
+            <p style="margin-top:200px;font-size:50px;font-weight:bold;text-align:center;display:block;">
+              OK. Don't get mad, but...
+            </p>
+          </section>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>A Rumor<h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: js; toolbar: false">
+$('.container').html('&lt;div>' +
+
+  'I heard' + 
+  ' that John Resig &lt;/div>' +
+
+  '&lt;em>cries&lt;/em> himself' +
+  
+  ' to sleep, when he sees you ' +
+  'do this..... D: ');
+</pre>
+<ul style="margin-left:20px;">
+  <li>"Hey can you change all the widgets to have a wrapper class?" --- "uh, oh..."</li>
+</ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>MicroTemplates (minimally)<h1>
+          </header>
+	  <section style="margin-top:133px;">
+            <pre class="brush: html; toolbar: false">
+&lt;ul>
+&lt;%
+_.each(products, function(prod){
+%>
+  &lt;li>
+    &lt;a href="#">&lt;%= prod.name %>&lt;/a>
+  &lt;/li>
+&lt;%  
+});
+%>
+&lt;/ul>
+</pre>
+	  </section>
+        </div>
+
+
+
+
+
+      
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Where to put templates<h1>
+          </header>
+          <section style="margin-top:133px;">
+          <p style="margin:0 35px;">In your markup:</p>
+            <pre class="brush: html; toolbar: false">
+&lt;script id="tmpl-t1" type="text/html">
+  &lt;h1>&lt;%= data.title =>&lt;/h1> 
+&lt;/script>
+</pre>
+<p style="margin:0 35px;">In your JS app:</p>
+ <pre class="brush: js; toolbar: false">
+// Get the markup out
+var t = $('#tmpl-t1').html();
+// Compile a template
+var tmpl = _.template(t);
+// render it
+tmpl({data: {title : 'Ralph Smells'}});
+</pre>
+	  </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Templates: <span style="font-weight:normal;">Some Notes</span><h1>
+          </header>
+	  <section style="margin-top:133px;">
+          <ul style="margin-left:20px;">
+            <li>I don't really care which you use, they're all the same...</li>
+            <li>Resig's Microtemplates, Mustache, Haml, &amp; jq-tmpl are popular.</li>
+            <li>Garann Means has a talk on this at 2:45pm, check it out.</li>
+            <li>Always compile your templates. Always.</li>
+          </ul>
+
+          </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>RequireJS &amp; Templates &amp; You!<h1>
+          </header>
+          <section style="margin-top:133px;">
+          <p style="margin:10px 35px;">You can load your templates as text dependencies!</p>
+ <pre class="brush: js; toolbar: false">
+require.def('myApp', ['text!tmpl/main.tmpl'],
+function(mainTmpl) {
+  // Compile a template
+  var tMain = _.template(mainTmpl);
+});
+</pre>
+     <ul style="margin-left:20px;">
+       <li>If you use the build tool, this is highly optimized.</li>
+       <li>This duplicates the compile step, so you could use a singleton :)</li>
+     </ul>
+	  </section>
+        </div>
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Last thing on Templates...<h1>
+          </header>
+          <section style="margin-top:133px;">
+ <pre class="brush: js; toolbar: false">
+var cache = {};
+function render(name, cntxt) {
+  if (!cache[name]) {
+    cache[name] = _.template(
+      $('#tmpl-'+name).html()
+    );
+  }
+  return cache[name](cntxt);
+}
+</pre>
+     <ul style="margin-left:20px;">
+       <li>Applies a dom prefix convention of id="tmpl-name"</li>
+       <li>Now you don't have to think about the dom, and compilation comes free.</li>
+     </ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Underscore.js: <span style="font-weight:normal;">JS Utility-Belt</span><h1>
+          </header>
+          <section style="margin-top:133px;">
+ <pre class="brush: js; toolbar: false">
+  var
+    nativeForEach      = ArrayProto.forEach,
+    nativeMap          = ArrayProto.map,
+    nativeFilter       = ArrayProto.filter,
+    nativeIndexOf      = ArrayProto.indexOf,
+    nativeIsArray      = Array.isArray;
+    // etc
+</pre>
+     <ul style="margin-left:20px;">
+       <li>The bow-tie to jQuery's tux... or something</li>
+       <li>Uses native functions when available</li>
+       <li><strong>Makes. Your. Code. Beautiful.</strong></li>
+     </ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>Underscore.js: <span style="font-weight:normal;">Functional &lt;3z</span><h1>
+          </header>
+          <section style="margin-top:133px;">
+<pre class="brush: js; toolbar: false">
+_(["apples", "oranges"])
+  .each(function(fruit) {
+    alert('I love ' + fruit);
+  });
+</pre>
+     <ul style="margin-left:20px;">
+       <li><strong>Ever need:</strong> each, map, reduce, reduceRight, detect, select, reject, all, any, include, invoke, pluck, max, min, sortBy, sortedIndex, toArray, size
+
+first, rest, last, compact, flatten, without, uniq, intersect, zip, indexOf, lastIndexOf, range
+
+bind, bindAll, memoize, delay, defer, wrap, compose
+
+keys, values, functions, extend, clone, tap, isEqual, isEmpty, isElement, isArray, isArguments, isFunction, isString, isNumber, isBoolean, isDate, isRegExp isNaN, isNull, <strong>or</strong> isUndefined
+<strong>???</strong><br /> <em>Oh yea, it has Resig's MicroTemplates built in too :)</em></li></ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+	<div class="slide">
+          <header>
+            <h1>Underscore Tip</h1>
+            <section>
+              <p class="quoteThing">
+                Delete your utils.js file, and start using underscore. 
+              </p>
+            </section>
+          </header>
+        </div>
+
+
+
+
+
+
+        <div class="slide">
+          <header>
+            <h1>PubSub: <span style="font-weight:normal;">Decoupled by Design</span><h1>
+          </header>
+          <section style="margin-top:133px;">
+<pre class="brush: js; toolbar: false">
+$.subscribe('something', function(a, b){
+  console.log(a, b);
+});
+
+$.publish('something', ['eh', 'bee']);
+
+// Yay, it logged!
+</pre>
+     <ul style="margin-left:20px;">
+       <li>A lot like custom events, but more simple. No relation to DOM.</li>
+       <li>Dojo did it. BUT - Pete Higgins <a href="http://github.com/phiggins42/bloody-jquery-plugins/blob/master/pubsub.js">ported it for us.</a>
+     </ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="slide">
+          <header>
+            <h1>With Best regards, for into the good future</h1>
+          </header>
+          <section class="text" style="margin-top:200px;">
+          <ul>
+            <li><strong>Alex Sexton</strong></li>
+            <li>AlexSexton [at] gmail [dot] com</li>
+            <li><a href="http://twitter.com/SlexAxton">@SlexAxton</a></li>
+            <li><a href="http://alexsexton.com/">http://alexsexton.com</a></li>
+            <li><a href="http://yayquery.com/">http://yayquery.com</a></li>
+          </ul>
+          </section>
+        </div>
+	
+
+
 	
       </div>
       
