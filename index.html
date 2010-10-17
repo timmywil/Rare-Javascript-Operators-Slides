@@ -1246,6 +1246,40 @@ $('div').each(function(){
 
 
 
+
+        <div class="slide">
+          <header>
+            <h1>EasyXDM: An Overview</h1>
+          </header>
+          <section class="smallerCode" style="margin-top:133px;">
+<pre class="brush: js; toolbar:false;">
+var socket = new easyXDM.Socket({
+  local: "name.html",
+  onReady: function(){
+    // you need to wait for the onReady callback before using the socket
+    socket.postMessage("foo-message");
+  },
+  onMessage: function(message, origin) {
+   alert("received " + message + " from " + origin);
+  }
+});
+</pre>
+<ul style="margin-left:20px;margin-top:0px;">
+  <li>Implements the postMessage API</li>
+  <li>Falls back to _everything_</li>
+  <li>Kind of a perfect solution for Cross Domain communication. <3z</li>
+</ul>
+	  </section>
+        </div>
+
+
+
+
+
+
+
+
+
 	<div class="slide">
           <header>
           <h1>Imagine</h1>
@@ -1341,6 +1375,7 @@ $('div').each(function(){
             <li><a href="http://ejohn.org/blog/simple-javascript-inheritance/">Simple Inheritance</a></li>
             <li><a href="http://documentcloud.github.com/underscore/">Underscore.js</a></li>
             <li><a href="http://documentcloud.github.com/backbone/">BackboneJS</a></li>
+            <li><a href="http://easyxdm.net/">EasyXDM</a></li>
           </ul>
           </section>
         </div>
