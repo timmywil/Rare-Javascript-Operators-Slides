@@ -1,4 +1,4 @@
 Rare Javascript Operators
 =========================
 
-http://timmywillison.com/pres/operators/
+<a href="http://timmywillison.com/pres/operators/">http://timmywillison.com/pres/operators/</a>
