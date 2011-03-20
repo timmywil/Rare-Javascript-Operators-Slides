@@ -111,16 +111,6 @@ section.middle { line-height: 68px; text-align: center; display: table-cell;
 	vertical-align: middle; height: 700px; width: 900px; }
 section.lower { margin-top: 200px; }
 
-/* Inputs
-----------------------------------*/
-button { font-size: 20px; }
-pre button { margin: 2px; }
-input { font-size: 16px; margin-right: 10px; font-family: Helvetica; padding: 3px; }
-input[type="range"] { width: 100%; }
-button { margin: 20px 10px 0 0; font-family: Verdana; }
-button.large { font-size: 32px; }
-
-
 div.example { display: block; padding: 10px 20px; color: black;
 	background: rgba(255, 255, 255, 0.4);
 	-webkit-border-radius: 8px; -khtml-border-radius: 8px;
@@ -129,6 +119,15 @@ div.example { display: block; padding: 10px 20px; color: black;
 video { -moz-border-radius: 8px; -khtml-border-radius: 8px;
 	-webkit-border-radius: 8px; border-radius: 8px;
 	border: 1px solid rgba(0, 0, 0, 0.2); }
+
+/* Inputs
+----------------------------------*/
+button { font-size: 20px; }
+pre button { margin: 2px; }
+input { font-size: 16px; margin-right: 10px; font-family: Helvetica; padding: 3px; }
+input[type="range"] { width: 100%; }
+button { margin: 20px 10px 0 0; font-family: Verdana; }
+button.large { font-size: 32px; }
 
 
 /* Slides
@@ -143,14 +142,16 @@ video { -moz-border-radius: 8px; -khtml-border-radius: 8px;
 	background-image: radial-gradient(center, #ff0000, #000000);
 	          filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff0000', EndColorStr='#000000', GradientType=1); }
 
-.slides { width: 100%; height: 100%; left: 0; top: 0; position: absolute; display: block;
+.slides { width: 100%; height: 100%; left: 0; top: 0; position: absolute;
 	-webkit-transition: -webkit-transform 1s ease-in-out;
 	 -khtml-transition: -khtml-transform 1s ease-in-out;
 	   -moz-transition: -moz-transform 1s ease-in-out;
 		-ms-transition: -ms-transform 1s ease-in-out;
 		 -o-transition: -o-transform 1s ease-in-out;
-			transition: transform 1s ease-in-out;
-	-webkit-animation-name:acceleratedScale; -webkit-animation-duration:1s; -webkit-animation-delay:0.5s; }
+			transition: transform 1s ease-in-out; }
+
+.js .slides { -webkit-transform: scale(0); display: none; }
+.animateIn .slides { -webkit-animation: acceleratedScale 1s; -webkit-transform: scale(1); }
 
 /* Animate in */
 @-webkit-keyframes acceleratedScale {
@@ -200,6 +201,8 @@ video { -moz-border-radius: 8px; -khtml-border-radius: 8px;
 
 #presentation-counter { color: #ccc; font-size: 100px; letter-spacing: 1px;
 	position: absolute; top: 40%; left: 0; width: 100%; text-align: center; }
+.js #presentation-counter { height: 32px; background: url(../img/loading.gif) no-repeat 50% 50%; }
+.animateIn #presentation-counter { height: auto; background: none; }
 
 /* Opening slides animation
 ----------------------------------*/

@@ -95,34 +95,6 @@
 		}
 	};
 
-
-	// modernizr lite via https://gist.github.com/598008
-	var testStyle = function( style ) {
-
-		var elem = document.createElement('div');
-		var prefixes = ['Webkit', 'Moz', 'O', 'ms', 'Khtml'];
-		var bool;
-		var bump = function( all, letter ) {
-			return letter.toUpperCase();
-		};
-		var prop;
-
-		bool = style in elem.style;
-		prop = style.replace( /^( . )/, bump ).replace( /-( [a-z] )/ig, bump );
-
-		for ( var len = prefixes.length; len--;  ){
-			if ( bool ) { 
-				break; 
-			}
-			bool = prefixes[len] + prop in elem.style;
-		}
-
-		document.documentElement.className += ' ' + ( bool ? '' : 'no-') + style.replace( /-/g, '');
-		return bool;
-	};
-
-	var canTransition = testStyle('transition');
-
 	/**
 	 * Slide
 	 */
@@ -424,5 +396,9 @@
 
 	// Initialize
 	var slideshow = new SlideShow( queryAll('.slide') );
-
+	
+	// Animate in on load (not doc ready to allow time for jsfiddle and syntax highlighting)
+	$(window).load(function() {
+		$('.presentation').addClass('animateIn').find('.slides').show();
+	});
 })();
