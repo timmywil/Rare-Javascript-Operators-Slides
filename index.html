@@ -151,7 +151,7 @@
         </header>
         <section class='smallerCode'>
           <p>Detect IE in JS using conditional comments (No block in that while?!?)</p>
-          <pre class='brush:js;toolbar:false'>var ie = (function(){&#x000A;    var undef,&#x000A;        v = 3,&#x000A;        div = document.createElement('div'),&#x000A;        all = div.getElementsByTagName('i');&#x000A;&#x000A;    while (&#x000A;        div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',&#x000A;        all[0]&#x000A;    );&#x000A;&#x000A;    return v > 4 ? v : undef;&#x000A;}());</pre>
+          <pre class='brush:js;toolbar:false'>var ie = (function(){&#x000A;    var undef,&#x000A;        v = 3,&#x000A;        div = document.createElement('div'),&#x000A;        all = div.getElementsByTagName('i');&#x000A;&#x000A;    while (&#x000A;        div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',&#x000A;        all[0]&#x000A;    );&#x000A;&#x000A;    return v > 4 ? v : undef;&#x000A;}());&#x000A;&#x000A;</pre>
         </section>
       </div>
       <!-- Set Operator -->
