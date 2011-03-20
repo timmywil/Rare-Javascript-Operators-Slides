@@ -187,15 +187,16 @@
       <!-- Strict equals -->
       <div class='slide' id='strict-equals'>
         <header>
-          <h2>Short answer: strict equals (===) has better performance, especially when types are different!</h2>
+          <h2>Short answer: strict equals (===) has better performance, especially when types are different.</h2>
           <a href='http://jsperf.com/equal-vs-strict-equal' target='_blank'>JSPerf stats</a>
         </header>
-        <section class='lower'>
+        <section class='lower smallerCode'>
           <p>Use <code>===</code> whenever possible, but there are few cases where it may not be adequate.</p>
           <h3>String literal vs string object</h3>
           <pre class='brush:js;toolbar:false'>"abc" == new String("abc") // true&#x000A;"abc" === new String("abc") // false</pre>
           <p><code>==</code> will check the value, but they are not the same type.</p>
-          <pre class='brush:js; toolbar:false'>typeof "abc" // "string"&#x000A;typeof new String("abc") // "object"&#x000A;&#x000A;&#x000A;</pre>
+          <pre class='brush:js; toolbar:false'>typeof "abc" // "string"&#x000A;typeof new String("abc") // "object"</pre>
+          <h5>*There is an exception: Firefox's js engine (spidermonkey) optimizes for ==, but does not have the same performance overall as webkit.</h5>
         </section>
       </div>
       <!-- Use bang instead -->

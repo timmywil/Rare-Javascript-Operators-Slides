@@ -41,6 +41,7 @@ h1 { display: block; padding: 0; margin: 0; margin-top: 20px; font-size: 60px; f
 .middle h1 { padding: 0 20px; margin: 0; }
 
 h2 { color: black; font-size: 40px; padding: 15px 0 0; line-height: 45px; }
+h5 { font-size: 20px; line-height: 24px; }
 
 a { color: #3355ee; display: inline-block; text-decoration: none; line-height: 110%; border-bottom: 2px solid #3355ee;
     -webkit-transition: all 0.2s ease-in-out;
