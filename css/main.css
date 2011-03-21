@@ -53,10 +53,11 @@ a { color: #3355ee; display: inline-block; text-decoration: none; line-height: 1
 }
 a:hover { color: #222; border-bottom-color: #3f3f3f; }
 
-ul { padding-left: 0; }
-ul li { list-style: none; padding: 10px 0 0; }
+ul { margin: 0 0 0 45px; }
+ul li { list-style: circle; padding: 10px 0 0; }
+ul.none li { list-style: none; }
 ol { margin: 45px 0 0 100px; }
-ol, ol li { list-style: decimal; line-height: 30px; }
+ol li { list-style: decimal; line-height: 30px; }
 
 
 td { vertical-align: top; }
@@ -110,7 +111,7 @@ section.text, footer.text { margin: 100px 30px 0; }
 footer { font-size: 12px; margin: 20px 0 0 30px; }
 section.middle { line-height: 68px; text-align: center; display: table-cell;
 	vertical-align: middle; height: 700px; width: 900px; }
-section.lower { margin-top: 200px; }
+section.lower { margin-top: 150px; }
 
 div.example { display: block; padding: 10px 20px; color: black;
 	background: rgba(255, 255, 255, 0.4);

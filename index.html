@@ -118,7 +118,7 @@
           <h1>Special Operators</h1>
         </header>
         <section class='center'>
-          <ul>
+          <ul class='none'>
             <li>
               <h3>Conditional Operator (Ternary)</h3>
               <pre class='brush: js; toolbar: false'>(condition ? ifTrue : ifFalse)</pre>
@@ -181,22 +181,35 @@
         </header>
         <section>
           <p>You know the difference. <code>==</code> attempts to coerce the values before comparison. So which should you use?</p>
-          <pre class='brush:js; toolbar:false'>0 === 0 // true&#x000A;0 == '0' // true&#x000A;0 === '0' // false&#x000A;0 == false // true&#x000A;0 == '' // true&#x000A;undefined == 'undefined' // true&#x000A;undefined === 'undefined' // false&#x000A;null == undefined // true&#x000A;null === undefined // false&#x000A;&#x000A;</pre>
+          <pre class='brush:js; toolbar:false'>0 === 0 // true&#x000A;0 == '0' // true&#x000A;0 === '0' // false&#x000A;0 == false // true&#x000A;0 == '' // true&#x000A;undefined == 'undefined' // true&#x000A;undefined === 'undefined' // false&#x000A;null == undefined // true&#x000A;null === undefined // false&#x000A;&#x000A;&#x000A;</pre>
+        </section>
+      </div>
+      <!-- Benchmark without coercion -->
+      <div class='slide' id='without-coercion'>
+        <section class='middle'>
+          <img alt='Equals benchmark without coercion' src='img/strict_equal_vs_equal.001.jpg' style='width:100%' />
+        </section>
+      </div>
+      <!-- Benchmark without coercion -->
+      <div class='slide' id='with-coercion'>
+        <section class='middle'>
+          <img alt='Equals benchmark with coercion' src='img/strict_equal_vs_equal.002.jpg' style='width:100%' />
         </section>
       </div>
       <!-- Strict equals -->
       <div class='slide' id='strict-equals'>
         <header>
-          <h2>Short answer: strict equals (===) has better performance, especially when types are different.</h2>
-          <a href='http://jsperf.com/equal-vs-strict-equal' target='_blank'>JSPerf stats</a>
+          <h2>Short answer: strict equals (===) has better performance. <a href='http://jsperf.com/equal-vs-strict-equal' target='_blank'>JSPerf stats</a></h2>
         </header>
-        <section class='lower smallerCode'>
-          <p>Use <code>===</code> whenever possible, but there are few cases where it may not be adequate.</p>
-          <h3>String literal vs string object</h3>
-          <pre class='brush:js;toolbar:false'>"abc" == new String("abc") // true&#x000A;"abc" === new String("abc") // false</pre>
-          <p><code>==</code> will check the value, but they are not the same type.</p>
-          <pre class='brush:js; toolbar:false'>typeof "abc" // "string"&#x000A;typeof new String("abc") // "object"</pre>
-          <h5>*There is an exception: The new Firefox 4 js engine (jägermonkey) optimizes for ==, but does not match the overall performance of JavaScriptCore (webkit).</h5>
+        <section class='lower'>
+          <ul>
+            <li>Webkit browsers have significantly lower performance with double equal when type coercion does occur.</li>
+            <li>IE6-8 has consistently better performance with <code>===</code> whether type coercion is done or not.</li>
+            <li>Opera also has consistently better performance with <code>===</code>, but type coercion significantly slows both.</li>
+            <li>Firefox 3.6 had the same numbers all across the board.</li>
+            <li>*Exception: The new Firefox 4 js engine (jägermonkey) optimizes for ==, so it does win in this browser.</li>
+            <li>Overall performance is unmatched in webkit.</li>
+          </ul>
         </section>
       </div>
       <!-- Use bang instead -->
@@ -205,7 +218,7 @@
           <h1>Bang! (bam)</h1>
           <p><code>==</code> is most often useful when doing comparison with null, also want to catch undefined.</p>
         </header>
-        <section class='lower center'>
+        <section class='middle center'>
           <img alt='Bambam' src='img/bambam.jpg' />
           <h2>In most cases, it would also be useful for you to catch 0 and empty string...</h2>
         </section>
@@ -216,7 +229,19 @@
           <h1>!!example</h1>
         </header>
         <section class='smallerCode'>
-          <pre class='brush:js; toolbar:false'>function foo( arg ) {&#x000A;  if ( arg != null ) {&#x000A;    // Argument is present, but may be empty string or 0&#x000A;  }&#x000A;}&#x000A;function foo( arg ) {&#x000A;  if ( !!arg ) {&#x000A;    // Argument is valid&#x000A;  }&#x000A;}&#x000A;// Can be even shorter&#x000A;function foo( arg ) {&#x000A;  if ( arg ) {&#x000A;    // 0, '', null, and undefined are "falsy"&#x000A;  }&#x000A;}&#x000A;&#x000A;&#x000A;</pre>
+          <pre class='brush:js; toolbar:false'>function foo( arg ) {&#x000A;  if ( arg != null ) {&#x000A;    // Argument is present, but may be empty string or 0&#x000A;  }&#x000A;}&#x000A;function foo( arg ) {&#x000A;  if ( !!arg ) {&#x000A;    // Argument is valid&#x000A;  }&#x000A;}&#x000A;// Can be even shorter&#x000A;function foo( arg ) {&#x000A;  if ( arg ) {&#x000A;    // 0, '', null, and undefined are "falsy"&#x000A;  }&#x000A;}&#x000A;&#x000A;</pre>
+        </section>
+      </div>
+      <!-- Strict equal adequacy -->
+      <div class='slide' id='strict-adequacy'>
+        <header>
+          <h2>There are a few cases where <code>===</code> may not be adequate.</h2>
+        </header>
+        <section class='lower'>
+          <h3>String literal vs string object</h3>
+          <pre class='brush:js;toolbar:false'>"abc" == new String("abc") // true&#x000A;"abc" === new String("abc") // false</pre>
+          <p><code>==</code> will check the value, but they are not the same type.</p>
+          <pre class='brush:js; toolbar:false'>typeof "abc" // "string"&#x000A;typeof new String("abc") // "object"&#x000A;&#x000A;</pre>
         </section>
       </div>
       <!-- Paradoxical number -->
@@ -233,7 +258,7 @@
       <div class='slide' id='thanks'>
         <section class='middle'>
           <h1>Thanks</h1>
-          <ul>
+          <ul class='none'>
             <li><a href="http://twitter.com/#!/timmywil">@timmywil (Also in the #jquery irc)</a></li>
             <li><a href="http://github.com/timmywil">Github</a></li>
             <li><a href="http://thisismedium.com">Bad MEDIUM website</a></li>
