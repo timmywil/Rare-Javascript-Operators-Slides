@@ -129,9 +129,29 @@
             </li>
             <li>
               <h3>Operators that are keywords</h3>
-              <pre class='brush: js; toolbar: false'>(function, delete, get, in, instanceof, let, new, set, this, typeof, void, yield)&#x000A;&#x000A;&#x000A;</pre>
+              <pre class='brush: js; toolbar: false'>(function, delete, get, in, instanceof, let, new, set, this, typeof, void, yield)&#x000A;&#x000A;</pre>
             </li>
           </ul>
+        </section>
+      </div>
+      <!-- Get Operator -->
+      <div class='slide' id='get'>
+        <header>
+          <h1>The <code>get</code> operator</h1>
+        </header>
+        <section>
+          <p>Binds an object property to a function that will be called when that property is looked up.</p>
+          <pre class='brush:js;toolbar:false'>var o = {&#x000A;  get latest () {&#x000A;    return this.log.length > 0 ?&#x000A;      this.log[ this.log.length - 1 ] :&#x000A;      null;&#x000A;  },&#x000A;  log: []&#x000A;};&#x000A;o.log[0] = "wowowow!";&#x000A;o.latest === "wowowow!";&#x000A;&#x000A;</pre>
+        </section>
+      </div>
+      <!-- Set Operator -->
+      <div class='slide' id='set'>
+        <header>
+          <h1>The <code>set</code> operator</h1>
+        </header>
+        <section class='smallerCode'>
+          <p>Binds an object property to a function to be called when there is an attempt to set that property</p>
+          <pre class='brush:js;toolbar:false'>var o = {&#x000A;  set current ( str ) {&#x000A;    return this.log[this.log.length] = str;&#x000A;  },&#x000A;  log: []&#x000A;};&#x000A;&#x000A;o.current = "foo";&#x000A;o.log[0] === "foo";&#x000A;delete o.current;&#x000A;&#x000A;</pre>
         </section>
       </div>
       <!-- Comma Operator -->
@@ -154,26 +174,6 @@
           <pre class='brush:js;toolbar:false'>var ie = (function(){&#x000A;    var undef,&#x000A;        v = 3,&#x000A;        div = document.createElement('div'),&#x000A;        all = div.getElementsByTagName('i');&#x000A;&#x000A;    while (&#x000A;        div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',&#x000A;        all[0]&#x000A;    );&#x000A;&#x000A;    return v > 4 ? v : undef;&#x000A;}());&#x000A;&#x000A;</pre>
         </section>
       </div>
-      <!-- Set Operator -->
-      <div class='slide' id='set'>
-        <header>
-          <h1>The <code>set</code> operator</h1>
-        </header>
-        <section class='smallerCode'>
-          <p>Binds an object property to a function to be called when there is an attempt to set that property</p>
-          <pre class='brush:js;toolbar:false'>var o = {&#x000A;  set current ( str ) {&#x000A;    return this.log[this.log.length] = str;&#x000A;  },&#x000A;  log: []&#x000A;};&#x000A;&#x000A;o.current = "foo";&#x000A;o.log[0] === "foo";&#x000A;delete o.current;&#x000A;&#x000A;</pre>
-        </section>
-      </div>
-      <!-- Get Operator -->
-      <div class='slide' id='get'>
-        <header>
-          <h1>The <code>get</code> operator</h1>
-        </header>
-        <section>
-          <p>Binds an object property to a function that will be called when that property is looked up.</p>
-          <pre class='brush:js;toolbar:false'>var o = {&#x000A;  get latest () {&#x000A;    return this.log.length > 0 ?&#x000A;      this.log[ this.log.length - 1 ] :&#x000A;      null;&#x000A;  },&#x000A;  log: []&#x000A;};&#x000A;o.log[0] = "wowowow!";&#x000A;o.latest === "wowowow!";&#x000A;&#x000A;&#x000A;</pre>
-        </section>
-      </div>
       <!-- Hot debate ( equality ) -->
       <div class='slide' id='equality'>
         <header>
@@ -181,7 +181,7 @@
         </header>
         <section>
           <p>You know the difference. <code>==</code> attempts to coerce the values before comparison. So which should you use?</p>
-          <pre class='brush:js; toolbar:false'>0 === 0 // true&#x000A;0 == '0' // true&#x000A;0 === '0' // false&#x000A;0 == false // true&#x000A;0 == '' // true&#x000A;undefined == 'undefined' // true&#x000A;undefined === 'undefined' // false&#x000A;null == undefined // true&#x000A;null === undefined // false&#x000A;&#x000A;&#x000A;</pre>
+          <pre class='brush:js; toolbar:false'>0 === 0 // true&#x000A;0 == '0' // true&#x000A;0 === '0' // false&#x000A;0 == false // true&#x000A;0 == '' // true&#x000A;undefined == 'undefined' // true&#x000A;undefined === 'undefined' // false&#x000A;null == undefined // true&#x000A;null === undefined // false&#x000A;&#x000A;</pre>
         </section>
       </div>
       <!-- Strict equals -->
