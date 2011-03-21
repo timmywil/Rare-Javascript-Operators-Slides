@@ -196,7 +196,7 @@
           <pre class='brush:js;toolbar:false'>"abc" == new String("abc") // true&#x000A;"abc" === new String("abc") // false</pre>
           <p><code>==</code> will check the value, but they are not the same type.</p>
           <pre class='brush:js; toolbar:false'>typeof "abc" // "string"&#x000A;typeof new String("abc") // "object"</pre>
-          <h5>*There is an exception: Firefox's js engine (spidermonkey) optimizes for ==, but does not have the same performance overall as webkit.</h5>
+          <h5>*There is an exception: The new Firefox 4 js engine (jägermonkey) optimizes for ==, but does not match the overall performance of JavaScriptCore (webkit).</h5>
         </section>
       </div>
       <!-- Use bang instead -->
