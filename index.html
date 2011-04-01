@@ -151,7 +151,8 @@
         </header>
         <section class='smallerCode'>
           <p>Binds an object property to a function to be called when there is an attempt to set that property</p>
-          <pre class='brush:js;toolbar:false'>var o = {&#x000A;  set current ( str ) {&#x000A;    return this.log[this.log.length] = str;&#x000A;  },&#x000A;  log: []&#x000A;};&#x000A;&#x000A;o.current = "foo";&#x000A;o.log[0] === "foo";&#x000A;delete o.current;&#x000A;&#x000A;</pre>
+          <pre class='brush:js;toolbar:false'>var o = {&#x000A;  set current ( str ) {&#x000A;    return this.log[this.log.length] = str;&#x000A;  },&#x000A;  log: []&#x000A;};&#x000A;&#x000A;o.current = "foo";&#x000A;o.log[0] === "foo";&#x000A;delete o.current;</pre>
+          <p>The <a target="_blank" href="http://jsperf.com/set-vs-function-call/2/">downside</a></p>
         </section>
       </div>
       <!-- Comma Operator -->
