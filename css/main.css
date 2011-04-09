@@ -55,6 +55,7 @@ a:hover { color: #222; border-bottom-color: #3f3f3f; }
 
 ul { margin: 0 0 0 45px; }
 ul li { list-style: circle; padding: 10px 0 0; line-height: 1.231; }
+ul.none { margin: 0; }
 ul.none li { list-style: none; }
 ol { margin: 45px 0 0 100px; }
 ol li { list-style: decimal; line-height: 30px; }
