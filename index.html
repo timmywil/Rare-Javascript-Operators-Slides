@@ -229,12 +229,12 @@
         </header>
         <section class='lower'>
           <ul>
-            <li>Webkit browsers have significantly lower performance with double equal when type coercion does occur.</li>
+            <li>Chrome's V8 engine has significantly lower performance with double equal when type coercion does occur( overall performance is unmatched in V8 ).</li>
+            <li>Safari's JavascriptCore is odd. <code>==</code> wins for no type coercion and <code>===</code> wins with type coercion.</li>
             <li>IE6-8 has consistently better performance with <code>===</code> whether type coercion is done or not.</li>
             <li>Opera also has consistently better performance with <code>===</code>, but type coercion significantly slows both.</li>
-            <li>Firefox 3.6 had the same numbers all across the board.</li>
-            <li>*Exception: The new Firefox 4 js engine (jägermonkey) optimizes for ==, so it does win in this browser.</li>
-            <li>Overall performance is unmatched in webkit.</li>
+            <li>Firefox 3.6's Spidermonkey had similar results to Chrome, but obviously with lower numbers.</li>
+            <li>The new Firefox 4 js engine (jägermonkey) optimizes for ==, so it does win in this browser.</li>
             <li>Strict equal(===) compresses to 1 byte just like (==) with gzip compression, so the argument that it takes up more space is not valid in that case.</li>
           </ul>
         </section>
