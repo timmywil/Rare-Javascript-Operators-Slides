@@ -135,6 +135,30 @@
         </header>
         <section>
           <iframe src='http://jsfiddle.net/timmywil/sGHzs/embedded/' style='width: 100%; height: 300px'></iframe>
+          <br />
+          <br />
+          <br />
+          <p class='right'>Next one will floor you!</p>
+        </section>
+      </div>
+      <!-- Zero-fill shift right -->
+      <div class='slide' id='zero-fill-shift-right'>
+        <header>
+          <h1>0-fill shift right(<code>&gt;&gt;&gt;</code>)</h1>
+        </header>
+        <section>
+          <p>Here's another useful bitwise operator.</p>
+          <p>A quick Math.floor for positive values (make sure it's positive tho)!</p>
+          <iframe src='http://jsfiddle.net/timmywil/ZcCDz/embedded/' style='width: 100%; height: 300px'></iframe>
+        </section>
+      </div>
+      <div class='slide' id='shift-right-example'>
+        <header>
+          <h1>Example.notAwesome >>> 0</h1>
+        </header>
+        <section class='smallerCode'>
+          <h4>Here's an <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/array/foreach">implementation from MDC</a> of forEach</h4>
+          <pre class='brush:js; toolbar: false'>Array.prototype.forEach = function( fun, thisp ) {&#x000A;  var t, len;&#x000A;  if ( this === void 0 ||&#x000A;      this === null ||&#x000A;      typeof fun !== "function" ) {&#x000A;    throw new TypeError();&#x000A;  }&#x000A;&#x000A;  t = Object(this);&#x000A;  len = t.length >>> 0;&#x000A;  for ( var i = 0; i < len; i++ ) {&#x000A;    if ( i in t ) {&#x000A;      fun.call(thisp, t[i], i, t);&#x000A;    }&#x000A;  }&#x000A;};&#x000A;&#x000A;&#x000A;&#x000A;</pre>
         </section>
       </div>
       <!-- Special operators -->
