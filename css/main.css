@@ -104,6 +104,7 @@ blockquote { margin: 20px -30px 0 0; padding: 20px;
 .two-column { -webkit-column-count: 2; -moz-column-count: 2; column-count: 2; }
 /* currently webkit-only */
 .stroke { -webkit-text-stroke-color: red; -webkit-text-stroke-width: 1px; }
+.small { font-size: 16px !important; line-height: 1.231em; }
 
 /* Content
 ----------------------------------*/

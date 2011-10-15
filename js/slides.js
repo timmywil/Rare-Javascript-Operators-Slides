@@ -398,7 +398,8 @@
 	var slideshow = new SlideShow( queryAll('.slide') );
 	
 	// Animate in on load (not doc ready to allow time for jsfiddle and syntax highlighting)
-	$(window).load(function() {
-		$('.presentation').addClass('animateIn').find('.slides').show();
-	});
+	window.onload = function() {
+		addClass( query('.presentation'), 'animateIn' );
+		query('.slides').style.display = "block";
+	};
 })();
